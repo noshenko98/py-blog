@@ -1,3 +1,4 @@
+{% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
@@ -21,17 +22,17 @@
     <p>{{ comment.content }}</p>
     </fieldset>
   {% endfor %}
-{% if user.is_authenticated %}
-  <h4>Add new comment</h4>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="text" name="new_comment">
-    <br>
-    <input type="submit" value="Add comment">
-  </form>
-{% endif %}
-
+<h3>Add new comment</h3>
+  {% if user.is_authenticated %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-success">Sent</button>
+    </form>
+  {% else %}
+    <p><a href="{% url "login" %}">Need Login</a></p>
+  {% endif %}
 </fieldset>
 </body>
 </html>
+
