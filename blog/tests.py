@@ -17,8 +17,6 @@ class PostListTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-
-
 class PostDetailTest(TestCase):
     fixtures = [
         "blog_system_db_data.json",
@@ -29,4 +27,3 @@ class PostDetailTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "blog/post_detail.html")
-
