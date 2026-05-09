@@ -8,7 +8,7 @@ from blog.forms import CommentaryForm
 from blog.models import Post
 
 
-class PostList(LoginRequiredMixin, ListView):
+class PostList(ListView):
     model = Post
     paginate_by = 5
     context_object_name = "post_list"
